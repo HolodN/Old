@@ -1,0 +1,15 @@
+.app{
+  margin: 0;
+}
+
+
+.text_section{
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.text_section h2{
+  text-align: center;
+
+}
