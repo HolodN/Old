@@ -37,7 +37,7 @@ function App(){
     
     
     axios.get('https://637f91dd5b1cc8d6f949a67e.mockapi.io/cart').then((res) =>{
-        console.log(res.data);
+        setOverlayItems(res.data);
     })
 
     }, [])
