@@ -18,6 +18,10 @@ function App(){
     const[overlayItems, setOverlayItems] = React.useState([])
     
     // useEffect используется когда надо вывести что то только вначале или когда обновляется.Две квадратные скобки в конце для ограничения в один запрос.
+
+    //Для поиска
+    const[search, setSearch] = React.useState('')
+
     React.useEffect(() =>{
         fetch('https://637f91dd5b1cc8d6f949a67e.mockapi.io/tyrs').then((resJson)=>{return resJson.json()})
 
@@ -47,7 +51,7 @@ function App(){
                 </p>
             </div>
 
-            <Cart item={tyrs} overlayItems={overlayItems} setOverlayItems={setOverlayItems}/>
+            <Cart item={tyrs} overlayItems={overlayItems} setOverlayItems={setOverlayItems} setSearch={setSearch} search={search}/>
             <Footer/>
 
 

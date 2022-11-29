@@ -8,20 +8,25 @@ const Cart =(props)=>{
         props.setOverlayItems([...props.overlayItems, obj]);
     }
 
+    const onClickSearch = (inputValue) =>{
+        props.setSearch(inputValue.target.value);
+    }
+
     return(
         <div className={style.cart_section}>
             <div className={style.search}>
             <h1>Туры:</h1>
                 <div className={style.search_block}>
                     <img src="/img/search.png" alt="поиск"></img>
-                    <input placeholder="Поиск"></input>
+                    <input onChange={onClickSearch} placeholder="Поиск"></input>
                 </div>
             </div>
 
         <div className={style.cart}>
             {
 
-            props.item.map(obj => {
+            props.item.filter((item)=>item.title.toLowerCase().includes(props.search.toLowerCase()))
+            .map(obj => {
                 return(
                     <Product key={obj.id}
                          title={obj.title} 
