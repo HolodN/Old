@@ -10,6 +10,7 @@ const Product =(props)=>{
     const onClickAdd =()=>{
 
         setAdded(!added);
+        let id = props.id
         let title = props.title
         let description = props.description
         let price = props.price

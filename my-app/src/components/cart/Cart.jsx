@@ -1,10 +1,12 @@
 import Product from "./item/Product"
 import style from "./cart.module.css"
+import axios from "axios";
 
 
 const Cart =(props)=>{ 
 
     const onAddOverlay =(obj)=>{
+        axios.post('https://637f91dd5b1cc8d6f949a67e.mockapi.io/cart', obj)
         props.setOverlayItems([...props.overlayItems, obj]);
     }
 

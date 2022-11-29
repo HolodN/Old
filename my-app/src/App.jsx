@@ -5,6 +5,7 @@ import Cart from './components/cart/Cart.jsx';
 import Footer from './components/footer/Footer.jsx';
 import Overlay from './components/overlay/Overlay';
 import React from 'react';
+import axios from 'axios';
 
 function App(){
 
@@ -23,12 +24,22 @@ function App(){
     const[search, setSearch] = React.useState('')
 
     React.useEffect(() =>{
-        fetch('https://637f91dd5b1cc8d6f949a67e.mockapi.io/tyrs').then((resJson)=>{return resJson.json()})
+        // fetch('https://637f91dd5b1cc8d6f949a67e.mockapi.io/tyrs').then((resJson)=>{return resJson.json()})
 
     // вывод в консоль
     // .then((myJson)=>{console.log(myJson)})
     
-    .then((myJson)=>{setTyrs(myJson)})
+    // .then((myJson)=>{setTyrs(myJson)});
+
+    axios.get('https://637f91dd5b1cc8d6f949a67e.mockapi.io/tyrs').then((resJson) =>{
+        setTyrs(resJson.data)
+    })
+    
+    
+    axios.get('https://637f91dd5b1cc8d6f949a67e.mockapi.io/cart').then((res) =>{
+        console.log(res.data);
+    })
+
     }, [])
 
     return(
