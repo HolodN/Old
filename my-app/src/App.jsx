@@ -6,6 +6,7 @@ import Footer from './components/footer/Footer.jsx';
 import Overlay from './components/overlay/Overlay';
 import React from 'react';
 import axios from 'axios';
+import{BrowserRouter, Routes, Route} from 'react-router-dom'
 
 function App(){
 
@@ -54,8 +55,17 @@ function App(){
 
     return(
         <div className="app">
-             {overlayOpen ? <Overlay overlayProp={overlayItems} closeOverlay={() => setOverlayOpen(false)} deleteItems={deleteItems} />
+             {overlayOpen ?
+              <Overlay overlayProp={overlayItems} closeOverlay={() => setOverlayOpen(false)} deleteItems={deleteItems} />
                 : null}
+
+                <Routes>
+                    <Route path='/favorites'
+                          element={
+                         <h2>Избранное</h2>
+                        }
+                         />
+                </Routes>
 
             <Header openOverlay={() => setOverlayOpen(true)} />
             <Banner/>

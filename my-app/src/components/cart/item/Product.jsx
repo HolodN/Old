@@ -38,7 +38,7 @@ const Product =(props)=>{
             fav === false?
             <button className={style.fav_btn} onClick={onClickFav}>Добавить в избранное</button>
             :
-            <button className={style.fav_btn} onClick={onClickFav}>Добавлен в избранное</button>
+            <button className={style.fav_btn_add} onClick={onClickFav}>Добавлен в избранное</button>
             }
 
         <img className={style.cart_img} src={props.img}></img>
