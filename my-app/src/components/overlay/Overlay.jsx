@@ -12,7 +12,10 @@ const Overlay = (props)=>{
                     <h2>Заявки</h2>
                     <button className={style.close_btn} onClick={props.closeOverlay}>X</button>                      
                 </div>
-            
+
+                {
+                    props.overlayProp.length >0?
+
                 <div className={style.product_list}>   
                     {
 
@@ -31,6 +34,10 @@ const Overlay = (props)=>{
                     }
                                     
                 </div>
+
+                    :<h2>Заявок нет</h2>
+
+                }
 
                 <div className={style.total_price}>
                     <p className={style.total_price_text}>Итог:</p>

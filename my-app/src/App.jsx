@@ -44,6 +44,8 @@ function App(){
 
     const deleteItems=(id)=>{
         console.log(id);
+        // удаляет запись c заданным id из mock.api
+        axios.delete(`https://637f91dd5b1cc8d6f949a67e.mockapi.io/cart/${id}`)
         setOverlayItems((objDelete)=> objDelete.filter(item => item.id !== id))
     }
 
