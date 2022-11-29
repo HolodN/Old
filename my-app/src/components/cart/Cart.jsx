@@ -5,7 +5,7 @@ import style from "./cart.module.css"
 const Cart =(props)=>{ 
 
     const onAddOverlay =(obj)=>{
-        props.setOverlayItems([...props.overlayItems], obj);
+        props.setOverlayItems([...props.overlayItems, obj]);
     }
 
     return(
@@ -42,7 +42,7 @@ const Cart =(props)=>{
                         
                         onPlus={(cartObj)=>{
                             console.log(cartObj)
-                            onAddOverlay.call(cartObj)
+                            onAddOverlay(cartObj)
                         }
                             
                             //onAddOverlay
