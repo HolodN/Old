@@ -23,6 +23,9 @@ function App(){
     //Для поиска
     const[search, setSearch] = React.useState('')
 
+    //Для хранения избранных заявок
+    const[favorites, setFavorites] = React.useState([])
+
     React.useEffect(() =>{
         // fetch('https://637f91dd5b1cc8d6f949a67e.mockapi.io/tyrs').then((resJson)=>{return resJson.json()})
 
@@ -69,7 +72,15 @@ function App(){
                 </p>
             </div>
 
-            <Cart item={tyrs} overlayItems={overlayItems} setOverlayItems={setOverlayItems} setSearch={setSearch} search={search}/>
+            <Cart 
+            item={tyrs}  
+            overlayItems={overlayItems} 
+            setOverlayItems={setOverlayItems}
+            setSearch={setSearch}
+            search={search}
+            favorites={favorites}
+            setFavorites={setFavorites}
+            />
             <Footer/>
 
 

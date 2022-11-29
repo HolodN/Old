@@ -14,6 +14,11 @@ const Cart =(props)=>{
         props.setSearch(inputValue.target.value);
     }
 
+    const onAddFav =(obj)=>{
+        axios.post('https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites', obj)
+        props.setFavorites([...props.favorites, obj]);
+    }
+
     return(
         <div className={style.cart_section}>
             <div className={style.search}>
@@ -39,9 +44,9 @@ const Cart =(props)=>{
                         //         }
                         //   }
 
-                          favBtn={()=>{
+                          favBtn={(favObj)=>{
 
-                            alert('избранное: ' + obj.title);
+                            onAddFav(favObj)
                           }
 
 

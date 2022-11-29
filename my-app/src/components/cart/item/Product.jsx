@@ -6,6 +6,17 @@ const Product =(props)=>{
 
 
     const[added, setAdded] = React.useState(false);
+    const[fav, setFav] = React.useState(false);
+
+    const onClickFav =()=>{
+        setFav(!fav);
+        let id = props.id 
+        let title = props.title
+        let description = props.description
+        let price = props.price
+        let img = props.img
+        props.favBtn({title, description, price, img,id});
+    }
     
     const onClickAdd =()=>{
 
@@ -22,7 +33,14 @@ const Product =(props)=>{
 
     return(
         <div className={style.cart_item}>
-            <button className={style.fav_btn} onClick={props.favBtn}>Добавить в избранное</button>
+
+            {
+            fav === false?
+            <button className={style.fav_btn} onClick={onClickFav}>Добавить в избранное</button>
+            :
+            <button className={style.fav_btn} onClick={onClickFav}>Добавлен в избранное</button>
+            }
+
         <img className={style.cart_img} src={props.img}></img>
         <p className={style.cart_title}>{props.title} </p>
         <p className={style.cart_description}>Сочи Из Москва - 7 Ночей 
