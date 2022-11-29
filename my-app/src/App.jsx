@@ -42,9 +42,14 @@ function App(){
 
     }, [])
 
+    const deleteItems=(id)=>{
+        console.log(id);
+        setOverlayItems((objDelete)=> objDelete.filter(item => item.id !== id))
+    }
+
     return(
         <div className="app">
-             {overlayOpen ? <Overlay overlayProp={overlayItems} closeOverlay={() => setOverlayOpen(false)} />
+             {overlayOpen ? <Overlay overlayProp={overlayItems} closeOverlay={() => setOverlayOpen(false)} deleteItems={deleteItems} />
                 : null}
 
             <Header openOverlay={() => setOverlayOpen(true)} />

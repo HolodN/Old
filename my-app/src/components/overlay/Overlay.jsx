@@ -18,7 +18,14 @@ const Overlay = (props)=>{
 
                         props.overlayProp.map(obj => {
                             return(
-                                <ProductItem key={obj.id} title={obj.title} price={obj.price} img={obj.img}/>
+                                <ProductItem 
+                                key={obj.id}
+                                id={obj.id} 
+                                title={obj.title} 
+                                price={obj.price} 
+                                img={obj.img} 
+                                deleteItems={props.deleteItems}
+                                />
                             )
                     })
                     }
