@@ -7,6 +7,8 @@ import Overlay from './components/overlay/Overlay';
 import React from 'react';
 import axios from 'axios';
 import{BrowserRouter, Routes, Route} from 'react-router-dom'
+import Favorites from './components/favorites/Favorites'
+import Home from './components/Home'
 
 function App(){
 
@@ -59,38 +61,37 @@ function App(){
               <Overlay overlayProp={overlayItems} closeOverlay={() => setOverlayOpen(false)} deleteItems={deleteItems} />
                 : null}
 
-                <Routes>
+            <Header openOverlay={() => setOverlayOpen(true)} />
+            
+            <Routes>
                     <Route path='/favorites'
                           element={
-                         <h2>Избранное</h2>
+                         <Favorites
+                         favorites={favorites}
+                         setFavorites={setFavorites}
+                         item={tyrs}
+                         overlayItems={overlayItems}
+                         setOverlayItems={setOverlayItems}
+                         />
                         }
                          />
+
+                         <Route path='/'
+                         element={
+
+                            <Home
+                            item={tyrs}
+                            overlayItems={overlayItems}
+                            setOverlayItems={setOverlayItems}
+                            setSearch={setSearch}
+                            search={search}
+                            favorites={favorites}
+                            setFavorites={setFavorites}
+                        />
+                         }
+                         />
                 </Routes>
-
-            <Header openOverlay={() => setOverlayOpen(true)} />
-            <Banner/>
-
-            <div className="text_section">
-                <h2>
-                ТУРЫ ОТ LIVE-TYR
-                </h2>
-                <p>
-                Сотрудничество более чем с 20 международными и национальными компаниями, работающими на отправку и прием туристов, позволяет нам качественно предоставлять услуги туристам из России, Болгарии, Румынии, Украины, Латвии, Литвы, Белоруссии, Эстонии, Молдавии и Казахстана. 
-                </p>
-                <p>
-                Международный туристический оператор является одной из международных компаний, организующих туры для туристов из России, стран бывшего СССР и Восточной Европы. TEZ TOUR основан в 1994 году.
-                </p>
-            </div>
-
-            <Cart 
-            item={tyrs}  
-            overlayItems={overlayItems} 
-            setOverlayItems={setOverlayItems}
-            setSearch={setSearch}
-            search={search}
-            favorites={favorites}
-            setFavorites={setFavorites}
-            />
+            
             <Footer/>
 
 
