@@ -15,6 +15,7 @@ const Favorites =(props)=>{
     const onDeleteFav =(id)=>{
         console.log(id);
         axios.delete(`https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites/${id}`)
+        //Проверка на предмет наличия/отстутствия необходимого id если его нет то убирает из избранного элемент
         props.setFavorites((fav) => fav.filter(item => item.id !==id));
     }
 
@@ -45,17 +46,14 @@ const Favorites =(props)=>{
                         }
 
                         onPlus={
-                        (cartObj)=>{
-                        onAddOverlay(cartObj)
+                            (cartObj)=>{
+                            onAddOverlay(cartObj)
                         }
-                    }
-
+                        }
                     />
                 )
             })
-
-        }
-            
+        }          
         </div>
     </div>
     )

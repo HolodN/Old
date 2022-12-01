@@ -4,7 +4,6 @@ import React from 'react';
 
 const FavoritesItem =(props)=>{
 
-
     const[added, setAdded] = React.useState(false);
     const[fav, setFav] = React.useState(false);
 
@@ -27,21 +26,21 @@ const FavoritesItem =(props)=>{
         let price = props.price
         let img = props.img
         props.onPlus({title, description,price, img});
-        // console.log(added);
 
     }
 
     const onDelete =()=>{
-        // console.log();
         props.onDeleteFav(props.id)
     }
 
     return(
         <div className={style.cart_item}>
 
-            <button className={style.fav_btn_add} onClick={onDelete}>X</button>
-            
-            
+            <button
+            className={style.fav_btn_add} 
+            onClick={onDelete}>
+                X
+            </button>
 
         <img className={style.cart_img} src={props.img}></img>
         <p className={style.cart_title}>{props.title} </p>

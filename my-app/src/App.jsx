@@ -63,43 +63,43 @@ function App(){
     return(
         <div className="app">
              {overlayOpen ?
-              <Overlay overlayProp={overlayItems} closeOverlay={() => setOverlayOpen(false)} deleteItems={deleteItems} />
-                : null}
+              <Overlay 
+                overlayProp={overlayItems} 
+                closeOverlay={() => setOverlayOpen(false)} 
+                deleteItems={deleteItems} 
+              />
+            : null}
 
             <Header openOverlay={() => setOverlayOpen(true)} />
             
             <Routes>
                     <Route path='/favorites'
                           element={
-                         <Favorites
-                         favorites={favorites}
-                         setFavorites={setFavorites}
-                         item={tyrs}
-                         overlayItems={overlayItems}
-                         setOverlayItems={setOverlayItems}
-                         />
-                        }
-                         />
+                            <Favorites
+                                favorites={favorites}
+                                setFavorites={setFavorites}
+                                item={tyrs}
+                                overlayItems={overlayItems}
+                                setOverlayItems={setOverlayItems}
+                            />
+                            }
+                     />
 
-                         <Route path='/'
+                    <Route path='/'
                          element={
-
                             <Home
-                            item={tyrs}
-                            overlayItems={overlayItems}
-                            setOverlayItems={setOverlayItems}
-                            setSearch={setSearch}
-                            search={search}
-                            favorites={favorites}
-                            setFavorites={setFavorites}
-                        />
+                                item={tyrs}
+                                overlayItems={overlayItems}
+                                setOverlayItems={setOverlayItems}
+                                setSearch={setSearch}
+                                search={search}
+                                favorites={favorites}
+                                setFavorites={setFavorites}
+                            />
                          }
-                         />
+                     />
                 </Routes>
-            
             <Footer/>
-
-
         </div>
     )
 }
