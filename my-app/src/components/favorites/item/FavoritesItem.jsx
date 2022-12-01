@@ -2,7 +2,7 @@ import style from './favoritesItem.module.css';
 import React from 'react';
 
 
-const Product =(props)=>{
+const FavoritesItem =(props)=>{
 
 
     const[added, setAdded] = React.useState(false);
@@ -32,7 +32,8 @@ const Product =(props)=>{
     }
 
     const onDelete =()=>{
-        props.onDeleteFav()
+        // console.log();
+        props.onDeleteFav(props.id)
     }
 
     return(
@@ -58,4 +59,4 @@ const Product =(props)=>{
     </div>
     )
 }
-export default Product
+export default FavoritesItem

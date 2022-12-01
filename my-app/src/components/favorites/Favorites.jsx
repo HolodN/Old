@@ -14,7 +14,7 @@ const Favorites =(props)=>{
 
     const onDeleteFav =(id)=>{
         console.log(id);
-        axios.delete('https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites/${id}')
+        axios.delete(`https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites/${id}`)
         props.setFavorites((fav) => fav.filter(item => item.id !==id));
     }
 
@@ -29,42 +29,33 @@ const Favorites =(props)=>{
         <div className={style.cart}>
             {
 
-            props.favorites.map(obj => {
+            props.favorites.map(obj =>{
                 return(
                     <FavoritesItem
-                     key={obj.id}
-                         title={obj.title} 
-                         price={obj.price}
-                          img={obj.img}
+                        key={obj.id}
+                        id={obj.id}
+                        title={obj.title} 
+                        price={obj.price}
+                        img={obj.img}
 
-                          onDeleteFav={
+                        onDeleteFav={
                             (id) => {
-                              onDeleteFav(props.id)
+                            onDeleteFav(id)
                             }
                         }
 
-                        onPlus={(cartObj)=>{
-                            console.log(cartObj)
-                            onAddOverlay(cartObj)
+                        onPlus={
+                        (cartObj)=>{
+                        onAddOverlay(cartObj)
                         }
                     }
-                 
 
-                    
-
-
-                        
-                    
-
-                          />
+                    />
                 )
             })
 
         }
             
-            
-        
-
         </div>
     </div>
     )

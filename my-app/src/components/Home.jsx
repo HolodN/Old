@@ -4,8 +4,8 @@ import Cart from "./cart/Cart"
 
 const Home=(props)=>{
     return(
-    <>
-    <Banner/>
+        <>
+        <Banner/>
             <div className="text_section">
                 <h2>
                 ТУРЫ ОТ LIVE-TYR
@@ -19,16 +19,16 @@ const Home=(props)=>{
             </div>
 
             <Cart 
-            item={props.item}  
-            overlayItems={props.overlayItems} 
-            setOverlayItems={props.setOverlayItems}
-            setSearch={props.setSearch}
-            search={props.search}
-            favorites={props.favorites}
-            setFavorites={props.setFavorites}
+                item={props.item}  
+                overlayItems={props.overlayItems} 
+                setOverlayItems={props.setOverlayItems}
+                setSearch={props.setSearch}
+                search={props.search}
+                favorites={props.favorites}
+                setFavorites={props.setFavorites}
             />
-            </>
+        </>
 
-            )
+    )
 }
 export default Home

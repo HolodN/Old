@@ -6,7 +6,7 @@ import Footer from './components/footer/Footer.jsx';
 import Overlay from './components/overlay/Overlay';
 import React from 'react';
 import axios from 'axios';
-import{BrowserRouter, Routes, Route} from 'react-router-dom'
+import{Routes, Route} from 'react-router-dom'
 import Favorites from './components/favorites/Favorites'
 import Home from './components/Home'
 
@@ -44,6 +44,11 @@ function App(){
     
     axios.get('https://637f91dd5b1cc8d6f949a67e.mockapi.io/cart').then((res) =>{
         setOverlayItems(res.data);
+    })
+
+    axios.get('https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites').then((res) =>{
+        setFavorites(res.data)
+    
     })
 
     }, [])
