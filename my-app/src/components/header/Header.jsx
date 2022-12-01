@@ -9,9 +9,9 @@ const Header =(props)=>{
         </Link>
         <nav>
         <Link to={'/favorites'}>
-            <a className={style.nav_item} href="">Избранное</a>
+            <h6 className={style.nav_item}>Избранное</h6>
         </Link>
-                <a className={style.nav_item} onClick={props.openOverlay} href="#">Заявки</a>
+                <a className={style.nav_item} onClick={props.openOverlay} href="#"> Заявки</a>
         </nav>
     </header>
     )
