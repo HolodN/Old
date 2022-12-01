@@ -1,24 +1,21 @@
 import React from 'react';
-import FavoritesItem from "./item/FavoritesItem"
 import axios from 'axios';
 import style from './favorites.module.css'
+import FavoritesItem from "./item/FavoritesItem"
+
 
 
 const Favorites =(props)=>{
-    // const onAddOverlay =(obj)=>{
-    //     axios.post('https://637f91dd5b1cc8d6f949a67e.mockapi.io/cart', obj)
-    //     props.setOverlayItems([...props.overlayItems, obj]);
-    // }
-
-
-    const onAddFav =(obj)=>{
-        axios.post('https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites', obj)
-        props.setFavorites([...props.favorites, obj]);
+    const onAddOverlay =(obj)=>{
+        axios.post('https://637f91dd5b1cc8d6f949a67e.mockapi.io/cart', obj)
+        props.setOverlayItems([...props.overlayItems, obj]);
     }
 
-    const onDeleteFav =(obj)=>{
-        // axios.post('https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites', obj)
-        // props.setFavorites([...props.favorites, obj]);
+
+    const onDeleteFav =(id)=>{
+        console.log(id);
+        axios.delete('https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites/${id}')
+        props.setFavorites((fav) => fav.filter(item => item.id !==id));
     }
 
 
@@ -39,26 +36,25 @@ const Favorites =(props)=>{
                          title={obj.title} 
                          price={obj.price}
                           img={obj.img}
-                        //   const onClickPlus ={ () =>{
-                        //     alert('выводит: '+ obj.title)
-                        //         }
-                        //   }
 
-                          favBtn={()=>{
+                          onDeleteFav={
+                            (id) => {
+                              onDeleteFav(props.id)
+                            }
+                        }
 
-                           
-                          }
-
-
-                          }
-                        
-                        onDeleteFav={(cartObj)=>{
+                        onPlus={(cartObj)=>{
                             console.log(cartObj)
-                            // onAddOverlay(cartObj)
+                            onAddOverlay(cartObj)
                         }
-                            
-                            //onAddOverlay
-                        }
+                    }
+                 
+
+                    
+
+
+                        
+                    
 
                           />
                 )
