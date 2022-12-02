@@ -11,23 +11,24 @@ const Product =(props)=>{
     const onClickFav =()=>{
         setFav(!fav);
         let id = props.id 
+        let myId = props.myId
         let title = props.title
         let description = props.description
         let price = props.price
         let img = props.img
-        props.favBtn({title, description, price, img,id});
+        props.favBtn({title, description, price, img, id, myId});
     }
     
     const onClickAdd =()=>{
 
         setAdded(!added);
         let id = props.id
+        let myId = props.myId
         let title = props.title
         let description = props.description
         let price = props.price
         let img = props.img
-        props.onPlus({title, description,price, img});
-        // console.log(added);
+        props.onPlus({title, description, price, img, id, myId});
 
     }
 

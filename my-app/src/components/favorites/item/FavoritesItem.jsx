@@ -5,17 +5,7 @@ import React from 'react';
 const FavoritesItem =(props)=>{
 
     const[added, setAdded] = React.useState(false);
-    const[fav, setFav] = React.useState(false);
 
-    const onClickFav =()=>{
-        setFav(!fav);
-        let id = props.id 
-        let title = props.title
-        let description = props.description
-        let price = props.price
-        let img = props.img
-        props.favBtn({title, description, price, img,id});
-    }
     
     const onClickAdd =()=>{
 

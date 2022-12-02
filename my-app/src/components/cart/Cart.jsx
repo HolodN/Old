@@ -5,18 +5,49 @@ import axios from "axios";
 
 const Cart =(props)=>{ 
 
-    const onAddOverlay =(obj)=>{
-        axios.post('https://637f91dd5b1cc8d6f949a67e.mockapi.io/cart', obj)
-        props.setOverlayItems([...props.overlayItems, obj]);
+    const onAddOverlay = async (obj)=>{
+        try{
+            const findOverlay =props.overlayItems.find(objOver => objOver.myId === obj.myId)
+            if(findOverlay)
+            {
+                axios.delete(`https://637f91dd5b1cc8d6f949a67e.mockapi.io/cart/${findOverlay.id}`)
+                props.setOverlayItems((over) => over.filter(item => item.myId !== obj.myId))
+
+            }
+
+            else{
+                const {data} = await axios.post('https://637f91dd5b1cc8d6f949a67e.mockapi.io/cart', obj)
+                props.setOverlayItems([...props.overlayItems, data]);
+            }
+        }
+        catch{
+            alert('произошла ошибка')
+        }
+        
     }
 
     const onClickSearch = (inputValue) =>{
         props.setSearch(inputValue.target.value);
     }
 
-    const onAddFav =(obj)=>{
-        axios.post('https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites', obj)
-        props.setFavorites([...props.favorites, obj]);
+    const onAddFav = async (obj)=>{
+        try{
+            const findFavorites = props.favorites.find(objFav => objFav.myId === obj.myId)
+            if(findFavorites){
+
+                axios.delete(`https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites/${findFavorites.id}`)
+            }
+            else {
+                const {data}= await axios.post('https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites', obj)
+                props.setFavorites([...props.favorites, data]);
+            }    
+
+        }
+        catch{
+
+            alert('произошла ошибка')
+        }
+        
     }
 
     return(
@@ -35,32 +66,28 @@ const Cart =(props)=>{
             props.item.filter((item)=>item.title.toLowerCase().includes(props.search.toLowerCase()))
             .map(obj => {
                 return(
-                    <Product key={obj.id}
-                         title={obj.title} 
-                         price={obj.price}
-                          img={obj.img}
-                        //   const onClickPlus ={ () =>{
-                        //     alert('выводит: '+ obj.title)
-                        //         }
-                        //   }
+                    <Product 
+                        key={obj.id}
+                        id={obj.id}
+                        myId={obj.myId}
+                        title={obj.title} 
+                        price={obj.price}
+                        img={obj.img}
 
-                          favBtn={(favObj)=>{
+                        favBtn={(favObj)=>{
 
                             onAddFav(favObj)
-                          }
-
-
-                          }
+                            } 
+                        }
                         
                         onPlus={(cartObj)=>{
+
                             console.log(cartObj)
                             onAddOverlay(cartObj)
-                        }
-                            
-                            //onAddOverlay
+                            }
                         }
 
-                          />
+                    />
                 )
             })
 
