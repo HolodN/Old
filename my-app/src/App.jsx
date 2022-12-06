@@ -86,6 +86,12 @@ async function axiosData(){
         <div className="app">
              {overlayOpen ?
               <Overlay 
+
+              total_price={
+                overlayItems.reduce((elements = overlayItems.length, obj) => 
+                elements + obj.price, 0
+                )
+            }
                 overlayProp={overlayItems} 
                 closeOverlay={() => setOverlayOpen(false)} 
                 deleteItems={deleteItems} 
