@@ -10,6 +10,9 @@ import{Routes, Route} from 'react-router-dom'
 import Favorites from './components/favorites/Favorites'
 import Home from './components/Home'
 
+export const AppContext = React.createContext({})
+
+
 function App(){
 
     // состояние корзины
@@ -30,6 +33,8 @@ function App(){
     const[favorites, setFavorites] = React.useState([])
 
     React.useEffect(() =>{
+    async function axiosData(){
+
         // fetch('https://637f91dd5b1cc8d6f949a67e.mockapi.io/tyrs').then((resJson)=>{return resJson.json()})
 
     // вывод в консоль
@@ -37,21 +42,19 @@ function App(){
     
     // .then((myJson)=>{setTyrs(myJson)});
 
-    axios.get('https://637f91dd5b1cc8d6f949a67e.mockapi.io/tyrs').then((resJson) =>{
-        setTyrs(resJson.data)
-    })
-    
-    
-    axios.get('https://637f91dd5b1cc8d6f949a67e.mockapi.io/cart').then((res) =>{
-        setOverlayItems(res.data);
-    })
+    const tyrsData = await axios.get('https://637f91dd5b1cc8d6f949a67e.mockapi.io/tyrs')
+    const cartData = await axios.get('https://637f91dd5b1cc8d6f949a67e.mockapi.io/cart')
+    const favoritesData = await axios.get('https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites')
 
-    axios.get('https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites').then((res) =>{
-        setFavorites(res.data)
-    
-    })
+    setTyrs = (tyrsData.data)
+    setOverlayItems=(cartData.data)
+    setFavorites(favoritesData.data)
+
+    }
+    axiosData();
 
     }, [])
+    
 
     const deleteItems=(id)=>{
         console.log(id);
@@ -60,7 +63,33 @@ function App(){
         setOverlayItems((objDelete)=> objDelete.filter(item => item.id !== id))
     }
 
+    const isAdded =(myId)=>{
+        return overlayItems.some((objIsAdded)=>objIsAdded.myId === myId)
+
+    }
+
+    const isFav =(myId) =>{
+            return favorites.some((objIsFav)=>objIsFav.myId === myId)
+    }
+
+
+
+
     return(
+        <AppContext.Provider
+        value={
+                {
+                tyrs,
+                setTyrs,
+                overlayItems,
+                setOverlayItems,
+                favorites,
+                setFavorites,
+                isAdded,
+                isFav
+                }
+            }
+        >
         <div className="app">
              {overlayOpen ?
               <Overlay 
@@ -101,6 +130,8 @@ function App(){
                 </Routes>
             <Footer/>
         </div>
+
+        </AppContext.Provider>
     )
 }
 export default App

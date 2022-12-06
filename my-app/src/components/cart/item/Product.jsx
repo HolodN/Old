@@ -1,11 +1,13 @@
 import style from './product.module.css';
 import React from 'react';
+import { AppContext } from '../../../App';
 
 
 const Product =(props)=>{
 
+        const context = React.useContext(AppContext)
 
-    const[added, setAdded] = React.useState(false);
+    const[added, setAdded] = React.useState(props.isAdded);
     const[fav, setFav] = React.useState(false);
 
     const onClickFav =()=>{
@@ -50,7 +52,8 @@ const Product =(props)=>{
         <div className={style.cart_price}>
             <span>{props.price}</span>
             <button className={ added ? style.add_cart:  style.add_true} 
-            onClick={onClickAdd} > { added ?  <img width={15}
+            onClick={onClickAdd} > { context.isAdded(props.myId) ?
+            <img width={15}
             src={ added ? '/img/icon.png':'' }
             alt=""/>:'Оставить заявку' }
             </button>
