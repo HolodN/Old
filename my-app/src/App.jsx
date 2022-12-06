@@ -92,7 +92,7 @@ async function axiosData(){
               />
             : null}
 
-            <Header openOverlay={() => setOverlayOpen(true)} />
+            <Header openOverlay={() => setOverlayOpen(true)} overlayItems={overlayItems} />
             
             <Routes>
                     <Route path='/favorites'

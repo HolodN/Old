@@ -9,9 +9,14 @@ const Header =(props)=>{
         </Link>
         <nav>
         <Link to={'/favorites'}>
-            <h6 className={style.nav_item}>Избранное</h6>
+            <h2 className={style.nav_item}>Избранное</h2>
         </Link>
-                <a className={style.nav_item} onClick={props.openOverlay} href="#"> Заявки</a>
+                <h2 className={style.nav_item} onClick={props.openOverlay} 
+                href="#">Заявки:
+                    <span>
+                        {props.overlayItems.length}
+                    </span>
+                     </h2>
         </nav>
     </header>
     )
