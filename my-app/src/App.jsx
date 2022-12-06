@@ -33,27 +33,20 @@ function App(){
     const[favorites, setFavorites] = React.useState([])
 
     React.useEffect(() =>{
-    async function axiosData(){
-
-        // fetch('https://637f91dd5b1cc8d6f949a67e.mockapi.io/tyrs').then((resJson)=>{return resJson.json()})
-
-    // вывод в консоль
-    // .then((myJson)=>{console.log(myJson)})
+async function axiosData(){
+            
+            const tyrsData = await axios.get('https://637f91ca2f8f56e28e904e7d.mockapi.io/tyrs')
+            const cartData = await axios.get('https://637f91ca2f8f56e28e904e7d.mockapi.io/cart')
+            const favoritesData = await axios.get('https://637f91ca2f8f56e28e904e7d.mockapi.io/favorites')
     
-    // .then((myJson)=>{setTyrs(myJson)});
-
-    const tyrsData = await axios.get('https://637f91dd5b1cc8d6f949a67e.mockapi.io/tyrs')
-    const cartData = await axios.get('https://637f91dd5b1cc8d6f949a67e.mockapi.io/cart')
-    const favoritesData = await axios.get('https://637f91dd5b1cc8d6f949a67e.mockapi.io/favorites')
-
-    setTyrs = (tyrsData.data)
-    setOverlayItems=(cartData.data)
-    setFavorites(favoritesData.data)
-
-    }
-    axiosData();
-
-    }, [])
+              setTyrs(tyrsData.data)
+              setOverlayItems(cartData.data)
+              setFavorites(favoritesData.data)
+            }
+          axiosData();
+           
+         
+        }, [])
     
 
     const deleteItems=(id)=>{

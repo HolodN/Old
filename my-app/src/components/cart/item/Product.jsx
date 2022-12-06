@@ -38,10 +38,12 @@ const Product =(props)=>{
         <div className={style.cart_item}>
 
             {
-            fav === false?
-            <button className={style.fav_btn} onClick={onClickFav}>Добавить в избранное</button>
-            :
+            context.isFav(props.myId) == true ?
+
             <button className={style.fav_btn_add} onClick={onClickFav}>Добавлен в избранное</button>
+            :
+            <button className={style.fav_btn} onClick={onClickFav}>Добавить в избранное</button>
+        
             }
 
         <img className={style.cart_img} src={props.img}></img>
