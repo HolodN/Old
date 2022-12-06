@@ -1,10 +1,12 @@
 import React from "react"
 import Banner from "./banner/Banner"
 import Cart from "./cart/Cart"
+import TestSlider from "./testSlider"
 
 const Home=(props)=>{
     return(
         <>
+        <TestSlider/>
         <Banner/>
             <div className="text_section">
                 <h2>

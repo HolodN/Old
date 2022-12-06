@@ -13,3 +13,25 @@
   text-align: center;
 
 }
+
+/*slider*/
+.slider{
+
+background: #81c0f3;
+margin:10px;
+padding:2%;
+position: relative;
+
+
+}
+.slick-next:before{
+  color:blue;
+}
+
+.slick-prev:before{
+  color:blue;
+}
+
+
+
+/*slider*/
