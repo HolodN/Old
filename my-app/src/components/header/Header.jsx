@@ -12,12 +12,11 @@ const Header =(props)=>{
             <h2 className={style.nav_item}>Избранное</h2>
         </Link>
                 <h2 className={style.nav_item} onClick={props.openOverlay} 
-                href="#"> Заявки:
-                <span>
-                    {props.overlayItems.length}
-                </span>
-                
-                </h2>
+                href="#">Заявки:
+                    <span>
+                        {props.overlayItems.length}
+                    </span>
+                     </h2>
         </nav>
     </header>
     )
