@@ -34,7 +34,7 @@ const FavoritesItem =(props)=>{
 
         <img className={style.cart_img} src={props.img}></img>
         <p className={style.cart_title}>{props.title} </p>
-        <p className={style.cart_description}>Сочи Из Москва - 7 Ночей 
+        <p className={style.cart_description}>в Сочи Из Москвы - 7 Ночей 
         <br/>05.12.22 - 2 взрослых</p>
         <p className={style.price}>Цена:</p>
         <div className={style.cart_price}>
