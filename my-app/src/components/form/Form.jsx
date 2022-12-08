@@ -1,12 +1,16 @@
 import { useForm } from "react-hook-form";
 import React from "react";
 import style from "./form.module.css"
+import axios from "axios";
 
 
 export default function Form(){
 
     const { register, handleSubmit, formState:{errors} } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+    axios.post(`https://637f91dd5b1cc8d6f949a67e.mockapi.io/form`, data)
+    alert("Заявка отправлена")
+    }
 
     return(
         <div className={style.form}>
