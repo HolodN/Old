@@ -9,6 +9,7 @@ import axios from 'axios';
 import{Routes, Route} from 'react-router-dom'
 import Favorites from './components/favorites/Favorites'
 import Home from './components/Home'
+import Form from './components/form/Form';
 
 export const AppContext = React.createContext({})
 
@@ -125,6 +126,13 @@ async function axiosData(){
                                 setFavorites={setFavorites}
                             />
                          }
+                     />
+
+                     <Route path='/form'
+
+                     element={
+                        <Form/>
+                     }
                      />
                 </Routes>
             <Footer/>
