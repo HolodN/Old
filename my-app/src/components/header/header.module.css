@@ -6,6 +6,13 @@ header{
     padding-left: 50px;
     padding-right: 50px;
   }
+
+  @media (max-width:900px){
+
+    header{
+      grid-template-columns: 1fr;
+    }
+  }
   
   .logo{
     color: white;
